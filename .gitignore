@@ -2,3 +2,6 @@ artifact.html
 build-artifact.js
 node_modules
 .vercel
+
+.vercel
+.env*
