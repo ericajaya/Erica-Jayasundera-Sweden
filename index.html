@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Erica Jayasundera Research</title>
+<meta name="description" content="Doctoral applicant in cyber security. Adversarial machine learning, LLM and agent security, and the methodology for evaluating robustness honestly.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="shell">
+
+<aside class="side">
+  <div class="id">
+    <img class="portrait" src="portrait.jpg" alt="Portrait of Erica Jayasundera" width="84" height="84">
+    <div>
+      <h1>Erica Jayasundera</h1>
+      <p class="role">Doctoral applicant, cyber security</p>
+    </div>
+  </div>
+  <p class="tag">Adversarial machine learning and AI security</p>
+  <nav class="toc" aria-label="Sections">
+    <a href="#research">Research</a>
+    <a href="#lab">Evaluation lab</a>
+    <a href="#projects">Selected projects</a>
+    <a href="#publications">Publications</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="side-foot">
+    <button id="theme" class="theme" type="button" aria-label="Switch colour theme"><span class="dot"></span><span id="themeTxt">Theme</span></button>
+    <p>Updated October 2026</p>
+  </div>
+</aside>
+
+<main id="main">
+
+  <section class="intro" id="top">
+    <p class="kicker">PhD application · Cyber security · Sweden</p>
+    <h2 class="statement">A robustness claim should survive an attacker who has read the defence.</h2>
+    <p class="lede">Since 2012 I have worked on security-critical banking software at National Savings Bank, Sri Lanka. That work included supporting CBSL IT security audits and PCI-DSS compliance, settings where a security claim must be evidenced, reviewed by a third party and defended under scrutiny. This is the standard I want robustness claims in machine learning to meet.</p>
+    <p>I hold an MSc in Cyber Security and an MSc in Artificial Intelligence. They give me the grounding in threat modelling and systems security that I bring to adversarial machine learning.</p>
+    <dl class="facts">
+      <div><dt>Since 2012</dt><dd>Security-critical banking software, National Savings Bank</dd></div>
+      <div><dt>Audited by</dt><dd>CBSL, PwC and EY; PCI-DSS compliance</dd></div>
+      <div><dt>Co-founder</dt><dd>Mindview AI, building VibeSec and 7/24 Office</dd></div>
+    </dl>
+  </section>
+
+  <section id="research">
+    <h3 class="sec">Research</h3>
+    <article class="proposal">
+      <p class="label">PhD dissertation proposal, 2026</p>
+      <h4>Measuring What Breaks</h4>
+      <p>Reliable robustness evaluation against adaptive adversaries, from image classifiers to language-model agents.</p>
+    </article>
+    <h4 class="sub">Research interests</h4>
+    <ul class="interests">
+      <li><b>Adversarial machine learning.</b> Attacks, defences, and above all the methodology for evaluating them honestly.</li>
+      <li><b>LLM and agent security.</b> Prompt injection, tool misuse, and the design of defensible agent architectures.</li>
+      <li><b>Security of AI-generated code.</b> How code produced by language models introduces, or fails to prevent, vulnerabilities.</li>
+      <li><b>OSINT and influence operations.</b> How open-source intelligence and AI-enabled information campaigns intersect with security.</li>
+      <li><b>Post-quantum cryptography migration.</b> The practical challenge of moving real systems, especially in finance, to quantum-resistant cryptography.</li>
+    </ul>
+  </section>
+
+  <section id="lab">
+    <h3 class="sec">Evaluation lab</h3>
+    <p class="lead2">A toy illustration of why the attack matters as much as the defence. A linear classifier is attacked within an L∞ budget ε. The "saturated output" defence leaves every decision unchanged, but squashes the probability so a gradient-based attack sees no gradient. It looks robust until the attack is adapted.</p>
+    <div class="lab" id="labRoot">
+      <div class="controls">
+        <fieldset>
+          <legend>Model</legend>
+          <label><input type="radio" name="model" value="std" checked> Standard</label>
+          <label><input type="radio" name="model" value="sat"> Saturated output (gradient masking)</label>
+        </fieldset>
+        <fieldset>
+          <legend>Attack</legend>
+          <label><input type="radio" name="attack" value="noise"> Random noise</label>
+          <label><input type="radio" name="attack" value="naive" checked> Naive gradient attack</label>
+          <label><input type="radio" name="attack" value="adaptive"> Adaptive attack</label>
+        </fieldset>
+        <label class="eps" for="eps">Budget ε <output id="epsOut">0.60</output>
+          <input id="eps" type="range" min="0" max="1.5" step="0.05" value="0.6">
+        </label>
+      </div>
+      <div class="plots">
+        <figure>
+          <canvas id="cvPlane" width="520" height="360" role="img" aria-label="Two-dimensional scatter of two classes with the classifier's decision boundary and attacked points"></canvas>
+          <figcaption>Points move at most ε in each coordinate. Rings mark points the attack flipped.</figcaption>
+        </figure>
+        <figure>
+          <canvas id="cvCurve" width="520" height="360" role="img" aria-label="Accuracy against attack budget for the three attacks on the chosen model"></canvas>
+          <ul class="legend"><li><i style="--k:var(--muted)"></i>Random noise</li><li><i style="--k:var(--accent)"></i>Naive gradient attack</li><li><i style="--k:var(--attack)"></i>Adaptive attack</li></ul>
+          <figcaption>Accuracy against ε, for the chosen model. Dashed line marks the current ε.</figcaption>
+        </figure>
+      </div>
+      <p class="readout" id="readout" aria-live="polite"></p>
+      <p class="note">Synthetic data and a two-parameter model, written for this page. It illustrates the evaluation point and is not a result from the dissertation.</p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h3 class="sec">Selected projects</h3>
+    <p class="muted">Code repositories: <a href="https://github.com/ericajaya/">github.com/ericajaya</a></p>
+    <div class="table" role="table" aria-label="Selected projects">
+      <div class="trow thead" role="row"><span role="columnheader">Project</span><span role="columnheader">Years</span><span role="columnheader">What it is and what it showed</span><span role="columnheader">Methods and stack</span></div>
+
+      <div class="trow" role="row"><span role="cell" class="pname">LLM attack-surface mapping</span><span role="cell" class="yrs">2023 – present</span><span role="cell">A catalogue of attacks on production LLM systems (indirect prompt injection, model extraction through APIs, a jailbreak taxonomy) and defence-in-depth architectures. It feeds both the papers and VibeSec's detection rules.</span><span role="cell" class="stack">Adaptive attack design, threat modelling</span></div>
+
+      <div class="trow" role="row"><span role="cell" class="pname">VibeSec, a vulnerability scanner for AI-generated code</span><span role="cell" class="yrs">2024 – present</span><span role="cell">A command-line tool that detects 12 OWASP-aligned weakness patterns that LLM coding assistants introduce, such as SQL injection, hardcoded credentials, insecure deserialisation and prompt-injection sinks. It runs in CI/CD pipelines.</span><span role="cell" class="stack">Python, AST analysis, LangChain, GitHub Actions</span></div>
+
+      <div class="trow" role="row"><span role="cell" class="pname">7/24 Office, a secure autonomous multi-agent platform</span><span role="cell" class="yrs">2024 – present</span><span role="cell">A 3,500-line agent platform with 26 tools and a three-layer memory pipeline. It uses scoped tool permissions, agent isolation and input sanitisation against prompt injection and agent hijacking.</span><span role="cell" class="stack">Python, FastAPI, LangGraph, Qdrant, PostgreSQL, Redis, MCP</span></div>
+
+      <div class="trow" role="row"><span role="cell" class="pname">Post-Quantum Cryptography Migration Guide (AUT)</span><span role="cell" class="yrs">2025 – present</span><span role="cell">A migration strategy for moving enterprise systems to post-quantum cryptography.</span><span role="cell" class="stack">Cryptographic inventory, migration planning</span></div>
+
+      <div class="trow" role="row"><span role="cell" class="pname">NDB Sri Lanka fraud case, forensic advisory series</span><span role="cell" class="yrs">2024</span><span role="cell">An independent forensic analysis of the National Development Bank fraud covering governance failures, gaps in anomaly detection and weak regulatory oversight.</span><span role="cell" class="stack">Financial forensics, control-gap analysis</span></div>
+
+      <div class="trow" role="row"><span role="cell" class="pname">Kapruka gift-concierge agent</span><span role="cell" class="yrs">2025</span><span role="cell">A multimodal shopping agent with a web crawler, persistent memory and multi-agent coordination. Delivered with an IEEE-style technical report.</span><span role="cell" class="stack">Python, CLIP, Qdrant, Streamlit</span></div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <h3 class="sec">Publications and writing</h3>
+    <p class="muted">Papers and reports on <a href="https://cmb.academia.edu/ericajayasundera">Academia.edu</a>. Books on the <a href="https://www.amazon.com/stores/Erica-Jayasundera/author/B0H8M7QJGM">Amazon author page</a>.</p>
+
+    <h4 class="sub">Research reports and proposals</h4>
+    <ol class="refs">
+      <li><span class="yr">2026</span><span><i>Measuring What Breaks: Reliable robustness evaluation against adaptive adversaries, from image classifiers to language-model agents.</i> PhD dissertation proposal.</span></li>
+      <li><span class="yr">2026</span><span><i>Closing the Gap: AI adoption in the European Union.</i> Policy research report, 54 references.</span></li>
+      <li><span class="yr">2025</span><span><i>Post-Quantum Cryptography Migration Guide.</i></span></li>
+      <li><span class="yr">2025</span><span><i>AI Trends and Cost-Benefit Analysis: Emerging AI economy roles.</i> Mindview AI.</span></li>
+      <li><span class="yr">2024</span><span><i>NDB Sri Lanka Fraud Case: Governance failures, anomaly detection and regulatory weaknesses.</i> Advisory series, VibeSec.</span></li>
+      <li><span class="yr">2024</span><span><i>Post-Context and Harness Engineering AI Paradigms.</i> Research report, Mindview AI.</span></li>
+      <li><span class="yr">2024</span><span><i>Emotionally Adaptive Agents.</i> Research proposal, AUT and Mindview AI.</span></li>
+    </ol>
+
+    <h4 class="sub">Books, non-fiction</h4>
+    <ol class="refs">
+      <li><span class="yr">2026</span><span><i>Look at the Logs: What your mind and body are trying to tell you about your work.</i> First edition. ISBN 979-8-16-072582-6. On Amazon.</span></li>
+      <li><span class="yr">2026</span><span><i>The Meeting That Never Happened: Cybercrime and trust, complete illustrated edition.</i> MindViewAI. A case-study handbook of 51 evidence-graded cybercrime cases, including deepfake fraud, with the controls that would have stopped each one. On Amazon.</span></li>
+      <li><span class="yr">2026</span><span><i>How Machines Know: An illustrated beginner's guide to the technologies that sense, learn, decide and prove.</i> 30 chapters, 88 drawings. At proof stage.</span></li>
+      <li><span class="yr">n.d.</span><span><i>Copyrights and Sri Lankan Music,</i> Volumes I and II. On Amazon.</span></li>
+      <li><span class="yr">In prep.</span><span><i>From SE 2.0 to SE 5.0: A software engineer's roadmap through the agentic era.</i> MindviewAI. Chapters 1 to 5 drafted.</span></li>
+      <li><span class="yr">In prep.</span><span><i>Four books on red, blue, purple and yellow teaming in the era of AI</i> (practical view). To be published on Amazon.</span></li>
+    </ol>
+
+    <h4 class="sub">Books, fiction</h4>
+    <ol class="refs">
+      <li><span class="yr">n.d.</span><span><i>The Cardinal Cipher.</i> Cryptography thriller.</span></li>
+      <li><span class="yr">n.d.</span><span><i>The Aristotle Cipher: A novel of medieval Dublin.</i></span></li>
+      <li><span class="yr">n.d.</span><span><i>A Study in Certainty.</i> Forensic mystery about an AI system that never says "I do not know". On Amazon.</span></li>
+      <li><span class="yr">n.d.</span><span><i>The Missing Class.</i> The second Erica Holmes casebook, on the failure modes of forensic classifiers. Forthcoming on Amazon.</span></li>
+    </ol>
+  </section>
+
+  <section id="experience">
+    <h3 class="sec">Experience</h3>
+    <div class="job">
+      <div class="when">2012 – present</div>
+      <div>
+        <h4>Senior Software Engineer, AI, Security and Financial Systems</h4>
+        <p class="org">National Savings Bank, Colombo, Sri Lanka. Contract 2012 to 2014, permanent staff from 2014.</p>
+        <ul>
+          <li>Contributed to information security programmes: CBSL IT security audits, PwC and EY cyber security audits, PCI-DSS compliance, and a bank-wide secure coding policy.</li>
+          <li>Led an investigation into weaknesses in transaction anomaly detection. Produced a governance risk assessment that recommended specific control fixes.</li>
+          <li>Built secure API integrations between core banking platforms and third-party payment gateways, with input validation, authentication controls and TLS.</li>
+          <li>Introduced code review and automated regression testing, which cut production incidents by about 35%.</li>
+          <li>Developed AI applications (NLP, computer vision, predictive analytics) for fraud detection and financial workflow automation.</li>
+          <li>Led QA from 2012 to 2015: built the SQA toolkit, the regression test harness and the audit process, and mentored QA and development staff.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="job">
+      <div class="when">2025 – present</div>
+      <div>
+        <h4>Co-founder and Lead AI Engineer</h4>
+        <p class="org">Mindview AI, Sri Lanka (hybrid)</p>
+        <ul>
+          <li>Built VibeSec, a vulnerability scanner for AI-generated code, and 7/24 Office, a secure multi-agent platform.</li>
+          <li>Researched attacks on LLMs, including prompt injection, jailbreaking and model extraction.</li>
+          <li>Wrote technical advisory reports on AI security, AI governance and financial fraud.</li>
+          <li>Earlier work (2009 to 2011): data warehousing and predictive analytics tools, plus security QA consultancy on ISO 27001 implementation and vulnerability assessment.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="job">
+      <div class="when">Earlier</div>
+      <div>
+        <h4>Earlier roles</h4>
+        <ul>
+          <li>Software Developer, mobile apps, Rich Media House, London, 2008 to 2009 (internship from July 2007).</li>
+          <li>Web developer and game designer, freelance, oDesk, 2007 to 2011.</li>
+          <li>Private tutor and freelancer on Fiverr.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h3 class="sec">Education and training</h3>
+    <div class="edu">
+      <div class="erow"><span class="yr">2024</span><div><b>MSc, Artificial Intelligence</b><br>University of Moratuwa, Sri Lanka</div></div>
+      <div class="erow"><span class="yr">2017 – 2019</span><div><b>MSc, Cyber Security (Information Systems)</b><br>University of Colombo School of Computing, Sri Lanka<br><span class="muted">Vulnerability assessment and penetration testing, digital forensics, ethical hacking, security frameworks, secure software engineering.</span></div></div>
+      <div class="erow"><span class="yr">2004 – 2008</span><div><b>BSc (Hons), Software Engineering, Second Class</b><br>Kingston University London, UK<br><span class="muted">Software architecture and design, project management, analytical problem-solving.</span></div></div>
+    </div>
+    <p class="muted">All degrees were taught in English.</p>
+
+    <h4 class="sub">Continuing study and certifications</h4>
+    <ol class="refs">
+      <li><span class="yr">2026</span><span>Generative AI Leader. Google Cloud.</span></li>
+      <li><span class="yr">2026</span><span>Taking Circular Innovation to Market. ICRES, 2nd International Conference on Resource Efficiency.</span></li>
+      <li><span class="yr">2025 – 26</span><span>Foundations of Machine Learning; Production ML (MLOps); AI Engineer Essentials (LLMOps and agent systems). Zuu Crew. Covers scikit-learn, MLflow, PySpark, Airflow, Kafka, Docker, AWS ECS, LangChain, LangGraph, Hugging Face, Qdrant and MCP.</span></li>
+      <li><span class="yr">2024 – 26</span><span>AI engineering bootcamp: multi-agent NL2SQL platform and multimodal AI agent, with IEEE-style technical reports. Zuu Crew AI.</span></li>
+      <li><span class="yr">2022 – 23</span><span>Digital Sherlocks (360/OS): advanced OSINT, deepfake detection, state-sponsored information operations. Atlantic Council Digital Forensic Research Lab (DFRLab).</span></li>
+      <li><span class="yr">2022</span><span>Embedded Machine Learning for Edge Computing. University of Moratuwa (ENTC), September 2022.</span></li>
+      <li><span class="yr">2022 – now</span><span>CISSP, in preparation.</span></li>
+      <li><span class="yr">Earlier</span><span>McKinsey Forward Programme; Machine Learning (Stanford, Coursera); Reproducible Research (Johns Hopkins); Big Data with Apache Spark and Scalable Machine Learning (edX).</span></li>
+    </ol>
+  </section>
+
+  <section id="skills">
+    <h3 class="sec">Technical skills</h3>
+    <dl class="skills">
+      <div><dt>AI and ML security</dt><dd>Adversarial ML, model evasion, prompt injection, LLM red-teaming, jailbreak analysis, RAG and agent security</dd></div>
+      <div><dt>Offensive and application security</dt><dd>Vulnerability assessment and penetration testing, SAST and DAST, secure code review, OWASP Top 10 and ASVS, API and supply-chain security</dd></div>
+      <div><dt>Threat intelligence and forensics</dt><dd>OSINT, influence-operation detection, STRIDE threat modelling, MITRE ATT&amp;CK, digital and financial forensics</dd></div>
+      <div><dt>Governance and compliance</dt><dd>NIST CSF, ISO 27001, PCI-DSS, CBSL IS guidelines, security audits</dd></div>
+      <div><dt>Machine learning</dt><dd>PyTorch, Keras, Transformers, GANs, reinforcement learning, NLP, computer vision</dd></div>
+      <div><dt>Programming and infrastructure</dt><dd>Python, Java, C++, SQL, Bash, JavaScript; FastAPI, LangChain, LangGraph; Docker, GitHub Actions, AWS, Azure, GCP; PostgreSQL, Redis, Qdrant</dd></div>
+    </dl>
+    <h4 class="sub">Teaching, mentoring and languages</h4>
+    <ul class="plain">
+      <li><b>Teaching.</b> Free information security sessions for university students.</li>
+      <li><b>Mentoring.</b> Junior developers and secure-coding knowledge-sharing sessions at NSB, and several MSc and undergraduate students on technical skills.</li>
+      <li><b>Languages.</b> English, native level. Swedish, beginner. French.</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h3 class="sec">Contact</h3>
+    <p class="mail"><a href="mailto:ericajayasundera@gmail.com">ericajayasundera@gmail.com</a></p>
+    <ul class="links">
+      <li><a href="https://www.linkedin.com/in/ejayasundera">LinkedIn</a></li>
+      <li><a href="https://github.com/ericajaya">GitHub</a></li>
+      <li><a href="https://cmb.academia.edu/ericajayasundera">Academia.edu</a></li>
+      <li><a href="https://medium.com/@ericajayasundera">Medium</a></li>
+      <li><a href="https://substack.com/@ericajayasundera">Substack</a></li>
+      <li><a href="https://www.amazon.com/stores/Erica-Jayasundera/author/B0H8M7QJGM">Amazon author page</a></li>
+    </ul>
+  </section>
+</main>
+</div>
+<script src="lab.js"></script>
+</body>
+</html>
