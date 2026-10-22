@@ -130,3 +130,4 @@ figcaption{font-size:.78rem;color:var(--muted);margin-top:6px}
 .legend{list-style:none;display:flex;flex-wrap:wrap;gap:4px 16px;margin-top:8px;font-size:.8rem}
 .legend li{display:flex;align-items:center;gap:6px}
 .legend i{width:16px;height:3px;background:var(--k);display:inline-block}
+.qr{margin-top:36px;width:fit-content}.qr img{width:200px;max-width:100%;height:auto;border-radius:10px;display:block}.qr figcaption{margin-top:8px}
